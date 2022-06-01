@@ -44,9 +44,6 @@ function buildMetadata(sample) {
     // Use `.html("") to clear any existing metadata
     PANEL.html("");
 
-    // Use `Object.entries` to add each key and value pair to the panel
-    // Hint: Inside the loop, you will need to use d3 to append new
-    // tags for each key-value in the metadata.
     Object.entries(result).forEach(([key, value]) => {
       PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
@@ -80,7 +77,7 @@ function buildCharts(sample) {
     var bar_sample_values = sample_values.slice(0,10).reverse();
 
     var yticks = bar_otu_ids.map(ytick => "OTU " + ytick);
-    //syntax for hover labels found at: https://plotly.com/javascript/bar-charts/#bar-chart-with-hover-text
+
     // 8. Create the trace for the bar chart. 
     var barData = [{
         x: bar_sample_values,
@@ -90,7 +87,6 @@ function buildCharts(sample) {
         orientation: 'h'
     }];
     // 9. Create the layout for the bar chart. 
-    // Margin syntax found at: https://plotly.com/javascript/setting-graph-size/
     var barLayout = {
       title: '<b>' + '<span style="font-size: 20px;">Top 10 Bacteria Cultures Found',
       xaxis: {title:""},
@@ -172,10 +168,7 @@ function buildCharts(sample) {
   }];
     
   // 5. Create the layout for the gauge chart.
-  // syntax to break line found at: https://stackoverflow.com/questions/35185143/how-to-create-new-line-in-plot-ly-js-title
-  // syntax to make a line bold found at: https://www.tutorialspoint.com/How-to-make-text-bold-in-HTML#:~:text=To%20make%20text%20bold%20in%20HTML%2C%20use%20the,strong%20importance%20to%20the%20text.
-  // syntax for font change found at: https://stackoverflow.com/questions/57919281/using-multiple-font-sizes-in-plotly-chart-title-python
-  var gaugeLayout = { 
+var gaugeLayout = { 
     title: '<b>' + '<span style="font-size: 20px;">Belly Button Washing Frequency</span>'+ 
     '</b>' + '<br>' + '<span style="font-size: 20px;">Scrubs Per Week</span>',
     margin: {
